@@ -18,6 +18,8 @@ const initialState = Object.assign({}, initialStateData, runModel(initialStateDa
 export default handleActions({
   UPDATE_PARAM_VALUE: (state, action) => updateParamValue(state, action),
   SET_MODEL_VALUES_TO_RESEARCHER_VALUES: (state, action) => setValuesToResearcher(state, action), 
+  SET_MODEL_VALUES_TO_MEAN: (state, action) => setValuesToMean(state, action), 
+  SET_MODEL_VALUES_TO_MEDIAN: (state, action) => setValuesToMedian(state, action), 
 }, initialState)
 
 // Manually update the values in the model
@@ -49,6 +51,36 @@ const setValuesToResearcher = (state, action) => {
 			// Find value for researcher
 			const researcherValue = param.researcherValues.filter(researcher => researcher.name === action.payload.researcherName)[0].value
 			return updateObject(param, {value: Number(researcherValue) || researcherValue})
+		})
+		return updateObject(section, {params: updatedParams})
+	})
+	console.log(runModel({modelData: updatedModel, modelConstants: state.modelConstants}))
+	return Object.assign({}, state, {modelData: updatedModel}, runModel({modelData: updatedModel, modelConstants: state.modelConstants})) 
+}
+
+// Set all values in the model to mean values
+const setValuesToMean = (state, action) => {
+	// Loop over all sections to access all params
+	const updatedModel = state.modelData.map((section, sectionKey) => {
+		// Then loop over all params in each section
+		const updatedParams = section.params.map((param, paramKey) => {
+			// Find value for researcher
+			return updateObject(param, {value: param.meanResearcherValues})
+		})
+		return updateObject(section, {params: updatedParams})
+	})
+	console.log(runModel({modelData: updatedModel, modelConstants: state.modelConstants}))
+	return Object.assign({}, state, {modelData: updatedModel}, runModel({modelData: updatedModel, modelConstants: state.modelConstants})) 
+}
+
+// Set all values in the model to median values
+const setValuesToMedian = (state, action) => {
+	// Loop over all sections to access all params
+	const updatedModel = state.modelData.map((section, sectionKey) => {
+		// Then loop over all params in each section
+		const updatedParams = section.params.map((param, paramKey) => {
+			// Find value for researcher
+			return updateObject(param, {value: param.medianResearcherValues})
 		})
 		return updateObject(section, {params: updatedParams})
 	})

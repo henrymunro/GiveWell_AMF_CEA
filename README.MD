@@ -5,4 +5,4 @@ To run this application locally: (you will need nodeJS and npm installed)
 2) Move to the repository root directory 
 3) Run the command 'npm run webpack' to build the application 
 4) Run the command 'npm run server' to start the server 
-5) The visit 'http://localhost:3000'
+5) Then visit 'http://localhost:3000'

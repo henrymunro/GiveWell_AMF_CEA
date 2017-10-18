@@ -41,11 +41,11 @@ export default class ResetValues extends React.Component {
   setModelValuesToResearcherValues () {
     this.setState({researcherChanged: false})
     if (this.props.selectedResearcher === 'Median'){
-      return 
+      return this.props.setModelValuesToMedian()
     }
 
     if (this.props.selectedResearcher === 'Mean'){
-      return 
+      return this.props.setModelValuesToMean()
     }
 
     this.props.setModelValuesToResearcherValues({researcherName: this.props.selectedResearcher})
