@@ -3,7 +3,8 @@ import * as actions from './actionTypes'
 
 
 const paramsActions = createActions({},
-	'UPDATE_SELECTED_RESEARCHER',
+	actions.UPDATE_SELECTED_RESEARCHER,
+	actions.ON_MODEL_VALUE_CHANGE,
 	{ namespace: 'RESET_VALUE' }
 )
 

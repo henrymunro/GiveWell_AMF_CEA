@@ -5,6 +5,7 @@ import Divider from 'material-ui/Divider'
 
 import * as selectors from '../reducer'
 import actions from '../actions'
+import resetValuesActions from '../../resetValues/actions'
 
 import ParamsInputHeading from './ParamsInputHeading'
 import ParamsInputName from './ParamsInputName'
@@ -19,13 +20,14 @@ import colors from '../../colors'
     modelData: selectors.getModelData(store),
 
   }
-}, Object.assign({}, actions))
+}, Object.assign({}, actions, resetValuesActions))
 
 
 export default class ParamsInput extends React.Component {
 
   updateParamValue ({paramName, value}) {
     this.props.updateParamValue({paramName, value})
+    this.props.onModelValueChange() // shows the model reset button 
   }
 
   setModelValuesToResearcherValues(researcherName) {

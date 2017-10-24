@@ -19,7 +19,8 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
   return {
 
     distinctResearchers: selectors.getDistinctResearchers(store),
-    selectedResearcher: selectors.getSelectedResearcher(store)
+    selectedResearcher: selectors.getSelectedResearcher(store),
+    modelValueChanged: selectors.getModelValueChanged(store)
 
   }
 }, Object.assign({}, paramsInputActions, actions))
@@ -53,6 +54,8 @@ export default class ResetValues extends React.Component {
 
   render () {
 
+    console.log('show: ', this.state.researcherChanged || this.props.modelValueChanged, this.state.researcherChanged, this.props.modelValueChanged )
+
     return <div className="">
       <Card style={{borderRadius: '6px', background: colors.A100, color: colors.A400, fontWeight: 500}}>
         <div className='cf'>
@@ -71,7 +74,7 @@ export default class ResetValues extends React.Component {
               onClick={this.setModelValuesToResearcherValues.bind(this)} 
               backgroundColor={colors.A500}
               hoverColor={colors.A300}
-              style={{color: colors.A200, visibility: this.state.researcherChanged ? 'visible' : 'hidden'}}/>       
+              style={{color: colors.A200, visibility: (this.state.researcherChanged || this.props.modelValueChanged) ? 'visible' : 'hidden'}}/>       
           </div>
         </div>
       </Card>
