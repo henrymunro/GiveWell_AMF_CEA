@@ -1,4 +1,6 @@
-This is a web application version of the CEA model published on August 16, 2017 at https://www.givewell.org/how-we-work/our-criteria/cost-effectiveness/cost-effectiveness-models 
+This is a simple web application version of the CEA model published on August 16, 2017 at https://www.givewell.org/how-we-work/our-criteria/cost-effectiveness/cost-effectiveness-models 
+
+The live version can be viewed at: [http://henrymunro.com/HireMe/GiveWell/](http://henrymunro.com/HireMe/GiveWell/)
 
 To run this application locally: (you will need nodeJS and npm installed)
 1) Clone the repository
